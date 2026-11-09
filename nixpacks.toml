@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["php83", "composer"]
+nixPkgs = ["php83", "composer", "php83-extensions"]
 
 [phases.build]
 cmds = ["composer install --no-dev --optimize-autoloader"]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php artisan config:cache && php artisan route:cache && php -S 0.0.0.0:$PORT -t public"

@@ -5,4 +5,4 @@ nixPkgs = ["php83", "composer", "php83-extensions"]
 cmds = ["composer install --no-dev --optimize-autoloader"]
 
 [start]
-cmd = "php artisan config:cache && php -S 0.0.0.0:\$PORT -t public"
+cmd = "php artisan config:cache && php -S 0.0.0.0:${PORT:-8080} -t public"
